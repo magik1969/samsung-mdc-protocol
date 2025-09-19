@@ -1,6 +1,6 @@
 {
   "name": "samsung-mdc-protocol",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Samsung display encoder/decoder based on multiple display control (MDC) protocol",
   "keywords": [
     "samsung",

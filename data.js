@@ -9,7 +9,7 @@ const inputs = [
     ['BNC',0x1E],
     ['DVI-Video',0x1F],
     ['MagicInfo',0x20],
-    ['HDMI1, HDMI',0x21],
+    [['HDMI1', 'HDMI'],0x21],
     ['HDMI1-PC',0x22],
     ['HDMI2',0x23],
     ['HDMI2-PC',0x24],
