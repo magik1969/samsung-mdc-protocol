@@ -1,3 +1,5 @@
+### 1.0.1/2025-09-19
+- inputs correction
 ### 1.0.0/2025-08-22
 - initial release
 ### TODO:
