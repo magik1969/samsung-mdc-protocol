@@ -34,7 +34,7 @@ socket.on('data', data => console.log('<', MDC.decode(data)))
   raw: <Buffer aa ff 03 09 41 00 00 28 00 25 01 00 00 9a>,
   rawStr: '*\x7F\x03\tA\x00\x00(\x00%\x01\x00\x00\x1A',
   id: 3,
-  allValue: {
+  extra: {
     ack: 'A',
     rcmd: 0,
     data: [0, 40, 0, 37, 1,  0, 0]

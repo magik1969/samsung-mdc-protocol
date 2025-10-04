@@ -153,7 +153,8 @@ function decode(data){
 	let id = trimed[2];
 	response['id'] = id;
 	let allvals = {}
-	response['allValue'] = allvals;
+	//response['allValue'] = allvals;
+	response['extra'] = allvals;
 	let dlength = trimed[3];
 	let ack = String.fromCharCode(trimed[4]);
 	allvals['ack'] = ack;
