@@ -89,10 +89,18 @@ function encode(cmd, id = addressDefaults.id){
 		//values to numbers using Number() or dictionary
 			vals = vals.map((val, ind) => {
 			if(!isNaN(Number(val))) //number value, nothing to do
-				return Number(val)
+				return Number(val) 
 			else{
 				try { //to use dictionary	
-					let dicnum = valdef[ind].dic.find(el => val.toUpperCase() == el[0].toUpperCase());
+					let dicnum = valdef[ind].dic.find(el => {
+						if(Array.isArray(el[0])){
+							let nina = el[0].find(e => e.toUpperCase() == val.toUpperCase())
+							if(nina) 
+								return true
+						}
+						else 
+							return val.toUpperCase() == el[0].toUpperCase()
+					});
 					return dicnum[1];
 				}
 				catch (err) {

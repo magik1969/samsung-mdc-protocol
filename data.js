@@ -1,9 +1,9 @@
 const inputs = [
     ['S-Video', 0x04],
     ['Component',0x08],
-    ['AV',0x0C],
+    [['AV1', 'AV'],0x0C],
     ['AV2',0x0D],
-    ['SCART1',0x0E],
+    [['SCART1', 'Ext'],0x0E],
     ['PC',0x14],
     ['DVI',0x18],
     ['BNC',0x1E],
@@ -13,23 +13,53 @@ const inputs = [
     ['HDMI1-PC',0x22],
     ['HDMI2',0x23],
     ['HDMI2-PC',0x24],
-    [['DP','DP1','DisplayPort1'],0x25],
-    ['DP2',0x26],
-    ['DP3',0x27],
+    [['DP1','DP','DisplayPort1'],0x25],
+    [['DP2', 'DisplayPort2'],0x26],
+    [['DP3', 'DisplayPort3'],0x27],
     ['HDMI3',0x31],
     ['HDMI3-PC',0x32],
     ['HDMI4',0x33],
     ['HDMI4-PC',0x34],
-    ['TV-DTV',0x40],
+    [['TV-DTV', 'DTV'],0x40],
     ['HD-BaseT',0x55],
     ['OCM',0x56],
     ['MagicInfo-S',0x60],
-    ['Screen Mirroring',0x61],
-    ['USB',0x62],
+    [['Screen Mirroring', 'WiDi'],0x61],
+    [['USB', 'Internal'],0x62],
     ['URL Launcher',0x63],
     ['Whiteboard',0x64],
     ['Web Browser',0x65],
     ['Remote Workspace',0x66]
+]
+
+const colorTemps = [
+    ['5000K', 0x00],
+    ['6000K', 0x01],
+    ['7000K', 0x02],
+    ['8000K', 0x03],
+    ['9000K', 0x04],
+    ['10000K', 0x05],
+    ['11000K', 0x06],
+    ['12000K', 0x07],
+    ['13000K', 0x08],
+    ['14000K', 0x09],
+    ['15000K', 0x0A],
+    ['6000K', 0x3C],
+    ['6500K', 0x41],
+    ['10000K', 0x64],
+    ['2800K', 0xFD],
+    ['3000K', 0xFE],
+    ['4000K', 0xFF]
+]
+
+const colorTones = [
+    ['Cool2', 0x00],
+    [['Cool1', 'Cool'], 0x01],
+    [['Normal', 'Standard'], 0x02],
+    [['Warm1', 'Warm'], 0x03],
+    ['Warm2', 0x04],
+    ['Natural', 0x05],
+    ['Off', 0x50]
 ]
 
 const commands = [
@@ -42,6 +72,18 @@ const commands = [
         {name: 'aspect'},
         {name: 'NTimeNF'},
         {name: 'FTimeNF'}
+    ]},
+
+    //Video Control
+    {name: 'video', cmd: 0x04, mode: 'r', value:[
+        {name: 'contrast'},
+        {name: 'brightness'},
+        {name: 'sharpness'},
+        {name: 'color'},
+        {name: 'tint'},
+        {name: 'colorTone', dic: colorTones},
+        {name: 'colorTemp', dic: colorTemps},
+        {name: 'unused'}
     ]},
 
     //Serial Number Control
@@ -124,6 +166,12 @@ const commands = [
 
     //RGB brightness control
     {name: 'rgbBrightness', cmd: 0x38, mode: 'rw', value:{ min: 0, max: 100}},
+
+    //Color tone control
+    {name: 'colorTone', cmd: 0x3e, mode: 'rw', value: {dic: colorTones}},
+
+    //Color temperature control
+    {name: 'colorTemp', cmd: 0x3F, mode: 'rw', value:{dic: colorTemps}},
 
     //Fan Speed Setting
     {name:'fanSpeed', cmd: 0x44, mode: 'rw', value:{ min: 0, max: 100}},
